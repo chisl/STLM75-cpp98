@@ -230,8 +230,7 @@ public:
 	 * REG T_OS:
 	 * The TOS register is a two-byte (16-bit) READ/WRITE register that stores the userprogrammable
 	 * upper trip-point temperature for the thermal alarm in two’s complement
-	 * format (see Table 8 on page 19). This register defaults to 80 °C at power-up (i.e., 0101 0000
-	 * 0000 0000).
+	 * format (see Table 8 on page 19).
 	 * The format of the TOS register is identical to that of the temperature register. The MSB
 	 * position contains the sign bit for the digital temperature and Bit14 contains the temperature
 	 * MSB.
@@ -246,6 +245,7 @@ public:
 		struct T_OS_
 		{
 			/* MODE rw */
+			static const uint16_t dflt = 0b0101000000000000; // 16'b101000000000000
 			static const uint16_t mask = 0b1111111111111111; // [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 		};
 	};
@@ -273,8 +273,7 @@ public:
 	 * REG T_HYS:
 	 * THYS register is a two-byte (16-bit) READ/WRITE register that stores the userprogrammable
 	 * lower trip-point temperature for the thermal alarm in two’s complement
-	 * format (see Table 8). This register defaults to 75 °C at power-up (i.e., 0100 1011 0000
-	 * 0000).
+	 * format (see Table 8).
 	 * The format of this register is the same as that of the temperature register. The MSB position
 	 * contains the sign bit for the digital temperature and bit14 contains the temperature MSB.
 	 */
@@ -287,6 +286,7 @@ public:
 		struct SB
 		{
 			/* MODE rw */
+			static const uint16_t dflt = 0b0; // 1'b0
 			static const uint16_t mask = 0b1000000000000000; // [15]
 		};
 		/* Bits SD: */
@@ -294,6 +294,7 @@ public:
 		struct SD
 		{
 			/* MODE rw */
+			static const uint16_t dflt = 0b10010110; // 8'b10010110
 			static const uint16_t mask = 0b0111111110000000; // [7,8,9,10,11,12,13,14]
 		};
 		/* Bits reserved_0: */
